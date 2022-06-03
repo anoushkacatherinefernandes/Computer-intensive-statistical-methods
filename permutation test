@@ -1,0 +1,28 @@
+rm(list=ls())
+x=c(94,197,16,38,99,141,23)
+y=c(52,104,146,10,51,30,40,27,46)
+n=length(x)
+m=length(y)
+diff_obvs = mean(x)-mean(y)
+
+#combined sample 
+z=c(x,y)
+N=length(z)
+
+diff_per={}
+M=10000
+
+for (i in 1:M)
+{
+  ind=sample(1:N,n,replace=FALSE)
+  xs=z[ind]
+  ys=z[-ind]
+  diff_per[i]=mean(xs)-mean(ys)
+}
+xs
+ys
+x
+y
+
+p_value=sum(diff_per>diff_obvs)/M
+p_value
